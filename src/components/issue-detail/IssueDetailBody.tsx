@@ -2,13 +2,13 @@
 
 import { useCallback, useState } from 'react';
 import { useFragment, useMutation } from 'react-relay';
-import type { fragmentIssueDetailBody_IssueFragment$key } from '@/__generated__/fragmentIssueDetailBody_IssueFragment.graphql';
-import type { mutationIssueDetailBodyUpdateMutation } from '@/__generated__/mutationIssueDetailBodyUpdateMutation.graphql';
+import type { IssueDetailBody_issue$key } from '@/__generated__/IssueDetailBody_issue.graphql';
+import type { IssueDetailBodyUpdateMutation as IssueDetailBodyUpdateMutationType } from '@/__generated__/IssueDetailBodyUpdateMutation.graphql';
 import { useToast } from '@hooks/useToasts';
-import { IssueDetailBodyFragment, mutationUpdateIssueBodyMutation } from './api';
+import { IssueDetailBodyFragment, IssueDetailBodyUpdateMutation } from './api';
 
 interface IssueDetailBodyProps {
-  issue: fragmentIssueDetailBody_IssueFragment$key;
+  issue: IssueDetailBody_issue$key;
 }
 
 export function IssueDetailBody({ issue: issueRef }: IssueDetailBodyProps) {
@@ -18,9 +18,8 @@ export function IssueDetailBody({ issue: issueRef }: IssueDetailBodyProps) {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState('');
 
-  const [commitUpdate] = useMutation<mutationIssueDetailBodyUpdateMutation>(
-    mutationUpdateIssueBodyMutation,
-  );
+  const [commitUpdate] =
+    useMutation<IssueDetailBodyUpdateMutationType>(IssueDetailBodyUpdateMutation);
 
   const saveDescription = useCallback(() => {
     if (draft === (issue.description ?? '')) {
@@ -50,19 +49,19 @@ export function IssueDetailBody({ issue: issueRef }: IssueDetailBodyProps) {
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
           rows={8}
-          className="w-full rounded-lg border border-zinc-300 p-3 text-sm text-zinc-800 focus:border-blue-500 focus:outline-none dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-200"
+          className="w-full rounded-lg border border-[#26263a] bg-[#131320] p-3 text-sm text-[#e4e4f4] outline-none transition-colors focus:border-[#f06292]/50 focus:ring-1 focus:ring-[#f06292]/20 placeholder:text-[#3c3c58]"
           placeholder="Add a description…"
         />
         <div className="flex gap-2">
           <button
             onClick={saveDescription}
-            className="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
+            className="cursor-pointer rounded-md bg-[#f06292] px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-[#e91e73]"
           >
             Save
           </button>
           <button
             onClick={() => setEditing(false)}
-            className="rounded-md px-3 py-1.5 text-sm text-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+            className="cursor-pointer rounded-md px-3 py-1.5 text-sm text-[#7070a0] transition-colors hover:bg-[#1c1c2e] hover:text-[#e4e4f4]"
           >
             Cancel
           </button>
@@ -77,13 +76,13 @@ export function IssueDetailBody({ issue: issueRef }: IssueDetailBodyProps) {
         setDraft(issue.description ?? '');
         setEditing(true);
       }}
-      className="min-h-[80px] cursor-text rounded-lg p-3 text-sm text-zinc-700 ring-1 ring-transparent hover:bg-zinc-50 hover:ring-zinc-200 dark:text-zinc-300 dark:hover:bg-zinc-800/50"
+      className="min-h-[80px] cursor-text rounded-lg p-3 text-sm text-[#c4c4d4] ring-1 ring-transparent transition-all hover:bg-[#131320] hover:ring-[#26263a]"
       title="Click to edit description"
     >
       {issue.description ? (
-        <p className="whitespace-pre-wrap">{issue.description}</p>
+        <p className="whitespace-pre-wrap leading-relaxed">{issue.description}</p>
       ) : (
-        <p className="text-zinc-400">No description. Click to add one.</p>
+        <p className="text-[#3c3c58]">No description. Click to add one.</p>
       )}
     </div>
   );

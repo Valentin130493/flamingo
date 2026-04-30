@@ -3,7 +3,7 @@
 import { Suspense, useCallback, useEffect, useState } from 'react';
 import { useLazyLoadQuery } from 'react-relay';
 import { commitLocalUpdate } from 'relay-runtime';
-import type { queryIssueListQuery } from '@/__generated__/queryIssueListQuery.graphql';
+import type { IssueListQuery as IssueListQueryType } from '@/__generated__/IssueListQuery.graphql';
 import { getRelayEnvironment } from '@/relay/environment';
 import { supabase } from '@/lib/supabase';
 
@@ -11,7 +11,7 @@ import { IssueListSkeleton } from '@/components/ui/Skeleton';
 import { IssueFilters } from './IssueFilters';
 import { IssueList } from './IssueList';
 import type { IssueFilterValues } from './types';
-import { IssueListDocQuery } from './api/query';
+import { IssueListQuery as IssueListQueryDoc } from './api';
 import { PAGINATION_SIZE } from '@/static/pagination';
 
 type IssuesFilter = {
@@ -54,7 +54,7 @@ function IssueListInner() {
     setQueryVars({ filter: { ...base, id: { in: ids } }, first: PAGINATION_SIZE });
   }, []);
 
-  const data = useLazyLoadQuery<queryIssueListQuery>(IssueListDocQuery, queryVars, {
+  const data = useLazyLoadQuery<IssueListQueryType>(IssueListQueryDoc, queryVars, {
     fetchPolicy: 'store-and-network',
   });
 

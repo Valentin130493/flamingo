@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1c7dface91fb4de9506e0695dd8f146b>>
+ * @generated SignedSource<<c5c0780d1b38bc5eec2677ffac4707ef>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -16,7 +16,7 @@ export type CommentThreadRefetchQuery$variables = {
   issueId: any;
 };
 export type CommentThreadRefetchQuery$data = {
-  readonly " $fragmentSpreads": FragmentRefs<"fragmentCommentThreadFragment">;
+  readonly " $fragmentSpreads": FragmentRefs<"CommentThread_query">;
 };
 export type CommentThreadRefetchQuery = {
   response: CommentThreadRefetchQuery$data;
@@ -113,7 +113,7 @@ return {
           }
         ],
         "kind": "FragmentSpread",
-        "name": "fragmentCommentThreadFragment"
+        "name": "CommentThread_query"
       }
     ],
     "type": "Query",
@@ -255,16 +255,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "d85d3533aca57f839b16e84e3c57348b",
+    "cacheID": "2e9a9d0e03af0ed60f9ece56bf250daa",
     "id": null,
     "metadata": {},
     "name": "CommentThreadRefetchQuery",
     "operationKind": "query",
-    "text": "query CommentThreadRefetchQuery(\n  $after: Cursor\n  $first: Int = 20\n  $issueId: UUID!\n) {\n  ...fragmentCommentThreadFragment_3YjkUj\n}\n\nfragment fragmentCommentItem_CommentFragment on comments {\n  nodeId\n  id\n  body\n  created_at\n  users {\n    nodeId\n    id\n    name\n    avatar_url\n  }\n}\n\nfragment fragmentCommentThreadFragment_3YjkUj on Query {\n  commentsCollection(filter: {issue_id: {eq: $issueId}}, first: $first, after: $after, orderBy: [{created_at: AscNullsFirst}]) {\n    edges {\n      node {\n        nodeId\n        ...fragmentCommentItem_CommentFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n}\n"
+    "text": "query CommentThreadRefetchQuery(\n  $after: Cursor\n  $first: Int = 20\n  $issueId: UUID!\n) {\n  ...CommentThread_query_3YjkUj\n}\n\nfragment CommentItem_comment on comments {\n  nodeId\n  id\n  body\n  created_at\n  users {\n    nodeId\n    id\n    name\n    avatar_url\n  }\n}\n\nfragment CommentThread_query_3YjkUj on Query {\n  commentsCollection(filter: {issue_id: {eq: $issueId}}, first: $first, after: $after, orderBy: [{created_at: AscNullsFirst}]) {\n    edges {\n      node {\n        nodeId\n        ...CommentItem_comment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "47389447888ca28b19af8650cccba62b";
+(node as any).hash = "06dad5398a9052c012df598a7d39bab5";
 
 export default node;

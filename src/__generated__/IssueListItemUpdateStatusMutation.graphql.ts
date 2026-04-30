@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<19569ca217980262e0662a93938ea827>>
+ * @generated SignedSource<<9baf5aea2b482d061e87069e0fce6170>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,36 +9,38 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from 'relay-runtime';
-export type mutationIssueDetailBodyUpdateMutation$variables = {
-  description: string;
+export type IssueListItemUpdateStatusMutation$variables = {
   id: any;
+  status: string;
 };
-export type mutationIssueDetailBodyUpdateMutation$data = {
+export type IssueListItemUpdateStatusMutation$data = {
   readonly updateissuesCollection: {
     readonly records: ReadonlyArray<{
-      readonly description: string | null | undefined;
       readonly id: any;
       readonly nodeId: string;
+      readonly status: string;
     }>;
   };
 };
-export type mutationIssueDetailBodyUpdateMutation = {
-  response: mutationIssueDetailBodyUpdateMutation$data;
-  variables: mutationIssueDetailBodyUpdateMutation$variables;
+export type IssueListItemUpdateStatusMutation = {
+  response: IssueListItemUpdateStatusMutation$data;
+  variables: IssueListItemUpdateStatusMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){
-var v0 = {
-  "defaultValue": null,
-  "kind": "LocalArgument",
-  "name": "description"
-},
-v1 = {
-  "defaultValue": null,
-  "kind": "LocalArgument",
-  "name": "id"
-},
-v2 = [
+var v0 = [
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "id"
+  },
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "status"
+  }
+],
+v1 = [
   {
     "alias": null,
     "args": [
@@ -63,8 +65,8 @@ v2 = [
         "fields": [
           {
             "kind": "Variable",
-            "name": "description",
-            "variableName": "description"
+            "name": "status",
+            "variableName": "status"
           }
         ],
         "kind": "ObjectValue",
@@ -102,7 +104,7 @@ v2 = [
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "description",
+            "name": "status",
             "storageKey": null
           }
         ],
@@ -114,38 +116,32 @@ v2 = [
 ];
 return {
   "fragment": {
-    "argumentDefinitions": [
-      (v0/*: any*/),
-      (v1/*: any*/)
-    ],
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "mutationIssueDetailBodyUpdateMutation",
-    "selections": (v2/*: any*/),
+    "name": "IssueListItemUpdateStatusMutation",
+    "selections": (v1/*: any*/),
     "type": "Mutation",
     "abstractKey": null
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": [
-      (v1/*: any*/),
-      (v0/*: any*/)
-    ],
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "mutationIssueDetailBodyUpdateMutation",
-    "selections": (v2/*: any*/)
+    "name": "IssueListItemUpdateStatusMutation",
+    "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "df0ae243263ae8968b5df0acbd01ba19",
+    "cacheID": "6eafcfe661ea214f64843043679b7ecc",
     "id": null,
     "metadata": {},
-    "name": "mutationIssueDetailBodyUpdateMutation",
+    "name": "IssueListItemUpdateStatusMutation",
     "operationKind": "mutation",
-    "text": "mutation mutationIssueDetailBodyUpdateMutation(\n  $id: UUID!\n  $description: String!\n) {\n  updateissuesCollection(filter: {id: {eq: $id}}, set: {description: $description}) {\n    records {\n      nodeId\n      id\n      description\n    }\n  }\n}\n"
+    "text": "mutation IssueListItemUpdateStatusMutation(\n  $id: UUID!\n  $status: String!\n) {\n  updateissuesCollection(filter: {id: {eq: $id}}, set: {status: $status}) {\n    records {\n      nodeId\n      id\n      status\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "9a785980c9cec84a2f6640b230e1cf9a";
+(node as any).hash = "1b982d7061d015a8ef65a19980ca4ae1";
 
 export default node;

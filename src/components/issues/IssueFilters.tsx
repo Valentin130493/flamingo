@@ -4,6 +4,9 @@ import { PRIORITIES, STATUSES } from '../ui/Badges/constants';
 import type { IssuePriority, IssueStatus } from '../ui/types';
 import { PRIORITY_LABELS, STATUS_LABELS, type IssueFiltersProps } from './types';
 
+const selectClass =
+  'rounded-md border border-[#26263a] bg-[#131320] px-3 py-1.5 font-[family-name:var(--font-dm-mono)] text-xs text-[#c4c4d4] outline-none transition-colors hover:border-[#3a3a54] focus:border-[#f06292]/50 focus:ring-1 focus:ring-[#f06292]/20';
+
 export function IssueFilters({ value, labels, onChange }: IssueFiltersProps) {
   function toggleLabel(id: string) {
     const next = value.labelIds.includes(id)
@@ -13,11 +16,11 @@ export function IssueFilters({ value, labels, onChange }: IssueFiltersProps) {
   }
 
   return (
-    <div className="flex flex-wrap items-center gap-3 border-b border-zinc-200 bg-white px-4 py-3 dark:border-zinc-800 dark:bg-zinc-950">
+    <div className="flex flex-wrap items-center gap-3 border-b border-[#26263a] px-4 py-3">
       <select
         value={value.status}
         onChange={(e) => onChange({ ...value, status: e.target.value as IssueStatus | '' })}
-        className="rounded-md border border-zinc-200 bg-white px-3 py-1.5 text-sm text-zinc-700 shadow-sm dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300"
+        className={selectClass}
       >
         <option value="">All statuses</option>
         {STATUSES.map((s) => (
@@ -30,7 +33,7 @@ export function IssueFilters({ value, labels, onChange }: IssueFiltersProps) {
       <select
         value={value.priority}
         onChange={(e) => onChange({ ...value, priority: e.target.value as IssuePriority | '' })}
-        className="rounded-md border border-zinc-200 bg-white px-3 py-1.5 text-sm text-zinc-700 shadow-sm dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300"
+        className={selectClass}
       >
         <option value="">All priorities</option>
         {PRIORITIES.map((p) => (
@@ -48,11 +51,13 @@ export function IssueFilters({ value, labels, onChange }: IssueFiltersProps) {
               <button
                 key={label.id}
                 onClick={() => toggleLabel(label.id)}
-                className="rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 transition-all ring-inset"
+                className="cursor-pointer rounded-md px-2.5 py-0.5 font-[family-name:var(--font-dm-mono)] text-xs transition-all"
                 style={{
-                  backgroundColor: active ? `${label.color}20` : 'transparent',
-                  color: active ? label.color : '#71717a',
-                  borderColor: active ? label.color : '#d4d4d8',
+                  backgroundColor: active ? `${label.color}18` : 'transparent',
+                  color: active ? label.color : '#7070a0',
+                  boxShadow: active
+                    ? `inset 0 0 0 1px ${label.color}50`
+                    : 'inset 0 0 0 1px #26263a',
                 }}
               >
                 {label.name}
@@ -65,7 +70,7 @@ export function IssueFilters({ value, labels, onChange }: IssueFiltersProps) {
       {(value.status || value.priority || value.labelIds.length > 0) && (
         <button
           onClick={() => onChange({ status: '', priority: '', labelIds: [] })}
-          className="ml-auto text-xs text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
+          className="ml-auto cursor-pointer font-[family-name:var(--font-dm-mono)] text-xs text-[#7070a0] transition-colors hover:text-[#f06292]"
         >
           Clear filters
         </button>

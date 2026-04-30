@@ -2,11 +2,11 @@
 
 import Image from 'next/image';
 import { useFragment } from 'react-relay';
-import type { fragmentCommentItem_CommentFragment$key } from '@/__generated__/fragmentCommentItem_CommentFragment.graphql';
+import type { CommentItem_comment$key } from '@/__generated__/CommentItem_comment.graphql';
 import { CommentItemFragment } from './api';
 
 type CommentItemProps = {
-  comment: fragmentCommentItem_CommentFragment$key;
+  comment: CommentItem_comment$key;
 };
 
 export function CommentItem({ comment: commentRef }: CommentItemProps) {
@@ -27,22 +27,24 @@ export function CommentItem({ comment: commentRef }: CommentItemProps) {
           alt={comment.users.name ?? ''}
           width={32}
           height={32}
-          className="mt-0.5 shrink-0 rounded-full"
+          className="mt-0.5 shrink-0 rounded-full ring-1 ring-[#26263a]"
         />
       ) : (
-        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-200 text-sm font-medium dark:bg-zinc-700">
+        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#1c1c2e] font-[family-name:var(--font-syne)] text-xs font-semibold text-[#f06292] ring-1 ring-[#26263a]">
           {comment.users?.name?.[0]?.toUpperCase() ?? '?'}
         </span>
       )}
 
-      <div className="flex-1 space-y-1">
+      <div className="flex-1 space-y-1.5">
         <div className="flex items-baseline gap-2">
-          <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+          <span className="text-sm font-medium text-[#e4e4f4]">
             {comment.users?.name ?? 'Unknown'}
           </span>
-          <span className="text-xs text-zinc-400">{createdAt}</span>
+          <span className="font-[family-name:var(--font-dm-mono)] text-xs text-[#7070a0]">
+            {createdAt}
+          </span>
         </div>
-        <p className="text-sm whitespace-pre-wrap text-zinc-700 dark:text-zinc-300">
+        <p className="whitespace-pre-wrap text-sm leading-relaxed text-[#c4c4d4]">
           {comment.body}
         </p>
       </div>

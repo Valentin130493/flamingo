@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<fa9cc9bc311cf8baed50bf9558c7746c>>
+ * @generated SignedSource<<a0f108f6fab8028ba259c9c679863d85>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,23 +10,25 @@
 
 import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type fragmentIssueAssignee_AssigneeFragment$data = {
-  readonly avatar_url: string | null | undefined;
+export type IssueDetailHeader_issue$data = {
+  readonly created_at: any;
   readonly id: any;
-  readonly name: string;
   readonly nodeId: string;
-  readonly " $fragmentType": "fragmentIssueAssignee_AssigneeFragment";
+  readonly priority: string;
+  readonly status: string;
+  readonly title: string;
+  readonly " $fragmentType": "IssueDetailHeader_issue";
 };
-export type fragmentIssueAssignee_AssigneeFragment$key = {
-  readonly " $data"?: fragmentIssueAssignee_AssigneeFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"fragmentIssueAssignee_AssigneeFragment">;
+export type IssueDetailHeader_issue$key = {
+  readonly " $data"?: IssueDetailHeader_issue$data;
+  readonly " $fragmentSpreads": FragmentRefs<"IssueDetailHeader_issue">;
 };
 
 const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "fragmentIssueAssignee_AssigneeFragment",
+  "name": "IssueDetailHeader_issue",
   "selections": [
     {
       "alias": null,
@@ -46,21 +48,35 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "name",
+      "name": "title",
       "storageKey": null
     },
     {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "avatar_url",
+      "name": "status",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "priority",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "created_at",
       "storageKey": null
     }
   ],
-  "type": "users",
+  "type": "issues",
   "abstractKey": null
 };
 
-(node as any).hash = "3be9cd642ae359de300231f98789602f";
+(node as any).hash = "53eac453c4eacefbefd798cb8bad31c4";
 
 export default node;

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<43bcf40996a1d812b05733d43c81677c>>
+ * @generated SignedSource<<66825ae74f1f578fd89fa1c81dd39cd7>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,22 +9,22 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from 'relay-runtime';
-export type mutationIssueDetailHeaderPriorityMutation$variables = {
+export type IssueDetailHeaderUpdateStatusMutation$variables = {
   id: any;
-  priority: string;
+  status: string;
 };
-export type mutationIssueDetailHeaderPriorityMutation$data = {
+export type IssueDetailHeaderUpdateStatusMutation$data = {
   readonly updateissuesCollection: {
     readonly records: ReadonlyArray<{
       readonly id: any;
       readonly nodeId: string;
-      readonly priority: string;
+      readonly status: string;
     }>;
   };
 };
-export type mutationIssueDetailHeaderPriorityMutation = {
-  response: mutationIssueDetailHeaderPriorityMutation$data;
-  variables: mutationIssueDetailHeaderPriorityMutation$variables;
+export type IssueDetailHeaderUpdateStatusMutation = {
+  response: IssueDetailHeaderUpdateStatusMutation$data;
+  variables: IssueDetailHeaderUpdateStatusMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -37,7 +37,7 @@ var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "priority"
+    "name": "status"
   }
 ],
 v1 = [
@@ -65,8 +65,8 @@ v1 = [
         "fields": [
           {
             "kind": "Variable",
-            "name": "priority",
-            "variableName": "priority"
+            "name": "status",
+            "variableName": "status"
           }
         ],
         "kind": "ObjectValue",
@@ -104,7 +104,7 @@ v1 = [
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "priority",
+            "name": "status",
             "storageKey": null
           }
         ],
@@ -119,7 +119,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "mutationIssueDetailHeaderPriorityMutation",
+    "name": "IssueDetailHeaderUpdateStatusMutation",
     "selections": (v1/*: any*/),
     "type": "Mutation",
     "abstractKey": null
@@ -128,20 +128,20 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "mutationIssueDetailHeaderPriorityMutation",
+    "name": "IssueDetailHeaderUpdateStatusMutation",
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "f4c76c5be7c9cf5208a346702cb95be7",
+    "cacheID": "e8849501837ce4462b390736e6fc7a12",
     "id": null,
     "metadata": {},
-    "name": "mutationIssueDetailHeaderPriorityMutation",
+    "name": "IssueDetailHeaderUpdateStatusMutation",
     "operationKind": "mutation",
-    "text": "mutation mutationIssueDetailHeaderPriorityMutation(\n  $id: UUID!\n  $priority: String!\n) {\n  updateissuesCollection(filter: {id: {eq: $id}}, set: {priority: $priority}) {\n    records {\n      nodeId\n      id\n      priority\n    }\n  }\n}\n"
+    "text": "mutation IssueDetailHeaderUpdateStatusMutation(\n  $id: UUID!\n  $status: String!\n) {\n  updateissuesCollection(filter: {id: {eq: $id}}, set: {status: $status}) {\n    records {\n      nodeId\n      id\n      status\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "2ca43a47b7fba095f53c0c540ba31d4c";
+(node as any).hash = "3e3a57f4855a4e728a050527c7fd0502";
 
 export default node;

@@ -2,23 +2,26 @@
 
 import { useCallback, useState } from 'react';
 import { useFragment, useMutation } from 'react-relay';
-import type { fragmentIssueDetailHeader_IssueFragment$key } from '@/__generated__/fragmentIssueDetailHeader_IssueFragment.graphql';
-import type { mutationIssueDetailHeaderTitleMutation } from '@/__generated__/mutationIssueDetailHeaderTitleMutation.graphql';
-import type { mutationIssueDetailHeaderStatusMutation } from '@/__generated__/mutationIssueDetailHeaderStatusMutation.graphql';
-import type { mutationIssueDetailHeaderPriorityMutation } from '@/__generated__/mutationIssueDetailHeaderPriorityMutation.graphql';
+import type { IssueDetailHeader_issue$key } from '@/__generated__/IssueDetailHeader_issue.graphql';
+import type { IssueDetailHeaderUpdateTitleMutation } from '@/__generated__/IssueDetailHeaderUpdateTitleMutation.graphql';
+import type { IssueDetailHeaderUpdateStatusMutation } from '@/__generated__/IssueDetailHeaderUpdateStatusMutation.graphql';
+import type { IssueDetailHeaderUpdatePriorityMutation } from '@/__generated__/IssueDetailHeaderUpdatePriorityMutation.graphql';
 import { PriorityBadge, StatusBadge } from '@/components/ui/Badges';
 import { useToast } from '@hooks/useToasts';
 import {
   IssueDetailHeaderFragment,
-  UpdateIssueTitleMutation,
-  UpdateIssueStatusMutation,
-  UpdateIssuePriorityMutation,
+  IssueDetailHeaderUpdateTitleMutation as UpdateTitleMutation,
+  IssueDetailHeaderUpdateStatusMutation as UpdateStatusMutation,
+  IssueDetailHeaderUpdatePriorityMutation as UpdatePriorityMutation,
 } from './api';
 import { PRIORITIES, STATUSES } from '../ui/Badges/constants';
 
 interface IssueDetailHeaderProps {
-  issue: fragmentIssueDetailHeader_IssueFragment$key;
+  issue: IssueDetailHeader_issue$key;
 }
+
+const selectClass =
+  'rounded-md border border-[#26263a] bg-[#131320] px-2 py-0.5 font-[family-name:var(--font-dm-mono)] text-xs text-[#c4c4d4] outline-none transition-colors hover:border-[#3a3a54] focus:border-[#f06292]/50';
 
 export function IssueDetailHeader({ issue: issueRef }: IssueDetailHeaderProps) {
   const issue = useFragment(IssueDetailHeaderFragment, issueRef);
@@ -27,13 +30,10 @@ export function IssueDetailHeader({ issue: issueRef }: IssueDetailHeaderProps) {
   const [editingTitle, setEditingTitle] = useState(false);
   const [titleDraft, setTitleDraft] = useState('');
 
-  const [commitTitle] =
-    useMutation<mutationIssueDetailHeaderTitleMutation>(UpdateIssueTitleMutation);
-  const [commitStatus] =
-    useMutation<mutationIssueDetailHeaderStatusMutation>(UpdateIssueStatusMutation);
-  const [commitPriority] = useMutation<mutationIssueDetailHeaderPriorityMutation>(
-    UpdateIssuePriorityMutation,
-  );
+  const [commitTitle] = useMutation<IssueDetailHeaderUpdateTitleMutation>(UpdateTitleMutation);
+  const [commitStatus] = useMutation<IssueDetailHeaderUpdateStatusMutation>(UpdateStatusMutation);
+  const [commitPriority] =
+    useMutation<IssueDetailHeaderUpdatePriorityMutation>(UpdatePriorityMutation);
 
   const saveTitle = useCallback(() => {
     const trimmed = titleDraft.trim();
@@ -89,7 +89,7 @@ export function IssueDetailHeader({ issue: issueRef }: IssueDetailHeaderProps) {
   });
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-4">
       {editingTitle ? (
         <input
           autoFocus
@@ -100,11 +100,11 @@ export function IssueDetailHeader({ issue: issueRef }: IssueDetailHeaderProps) {
             if (e.key === 'Enter') saveTitle();
             if (e.key === 'Escape') setEditingTitle(false);
           }}
-          className="w-full rounded border border-zinc-300 px-2 py-1 text-2xl font-semibold text-zinc-900 focus:border-blue-500 focus:outline-none dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-100"
+          className="w-full rounded-lg border border-[#26263a] bg-[#131320] px-3 py-2 font-[family-name:var(--font-syne)] text-2xl font-semibold text-[#e4e4f4] outline-none focus:border-[#f06292]/50 focus:ring-1 focus:ring-[#f06292]/20"
         />
       ) : (
         <h1
-          className="cursor-text text-2xl font-semibold text-zinc-900 hover:underline dark:text-zinc-100"
+          className="cursor-text font-[family-name:var(--font-syne)] text-2xl font-semibold text-[#e4e4f4] transition-colors hover:text-white"
           onClick={() => {
             setTitleDraft(issue.title);
             setEditingTitle(true);
@@ -115,14 +115,16 @@ export function IssueDetailHeader({ issue: issueRef }: IssueDetailHeaderProps) {
         </h1>
       )}
 
-      <div className="flex flex-wrap items-center gap-3 text-sm text-zinc-500">
-        <span>Created {createdAt}</span>
+      <div className="flex flex-wrap items-center gap-3">
+        <span className="font-[family-name:var(--font-dm-mono)] text-xs text-[#7070a0]">
+          Created {createdAt}
+        </span>
 
         <div className="flex items-center gap-1.5">
           <select
             value={issue.status}
             onChange={(e) => handleStatusChange(e.target.value)}
-            className="rounded border border-zinc-200 bg-white px-2 py-0.5 text-xs dark:border-zinc-700 dark:bg-zinc-900"
+            className={selectClass}
           >
             {STATUSES.map((s) => (
               <option key={s} value={s}>
@@ -137,7 +139,7 @@ export function IssueDetailHeader({ issue: issueRef }: IssueDetailHeaderProps) {
           <select
             value={issue.priority}
             onChange={(e) => handlePriorityChange(e.target.value)}
-            className="rounded border border-zinc-200 bg-white px-2 py-0.5 text-xs dark:border-zinc-700 dark:bg-zinc-900"
+            className={selectClass}
           >
             {PRIORITIES.map((p) => (
               <option key={p} value={p}>

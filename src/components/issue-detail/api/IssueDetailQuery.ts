@@ -1,22 +1,22 @@
 import { graphql } from 'react-relay';
 
-export const IssueDetailQueryDoc = graphql`
-  query queryIssueDetailQuery($id: UUID!, $issueId: UUID!) {
+export const IssueDetailQuery = graphql`
+  query IssueDetailQuery($id: UUID!, $issueId: UUID!) {
     issuesCollection(filter: { id: { eq: $id } }) {
       edges {
         node {
           nodeId
           id
-          ...fragmentIssueDetailHeader_IssueFragment
-          ...fragmentIssueDetailBody_IssueFragment
-          ...fragmentIssueLabels_IssueFragment
+          ...IssueDetailHeader_issue
+          ...IssueDetailBody_issue
+          ...IssueDetailLabels_issue
           users {
-            ...fragmentIssueAssignee_AssigneeFragment
+            ...IssueAssignee_user
           }
         }
       }
     }
-    ...fragmentCommentThreadFragment @arguments(issueId: $issueId)
+    ...CommentThread_query @arguments(issueId: $issueId)
     labelsCollection(orderBy: [{ name: AscNullsLast }]) {
       edges {
         node {

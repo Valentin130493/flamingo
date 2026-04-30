@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<5f978cc5cac45931fa00907210bdf9cd>>
+ * @generated SignedSource<<50aae9bc72258dac08c48ec915cf5d5a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,12 +9,12 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from 'relay-runtime';
-export type mutationAddCommentMutation$variables = {
+export type CommentThreadAddCommentMutation$variables = {
   author_id: any;
   body: string;
   issue_id: any;
 };
-export type mutationAddCommentMutation$data = {
+export type CommentThreadAddCommentMutation$data = {
   readonly insertIntocommentsCollection: {
     readonly records: ReadonlyArray<{
       readonly author_id: any;
@@ -32,9 +32,9 @@ export type mutationAddCommentMutation$data = {
     }>;
   } | null | undefined;
 };
-export type mutationAddCommentMutation = {
-  response: mutationAddCommentMutation$data;
-  variables: mutationAddCommentMutation$variables;
+export type CommentThreadAddCommentMutation = {
+  response: CommentThreadAddCommentMutation$data;
+  variables: CommentThreadAddCommentMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -185,7 +185,7 @@ return {
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "mutationAddCommentMutation",
+    "name": "CommentThreadAddCommentMutation",
     "selections": (v5/*: any*/),
     "type": "Mutation",
     "abstractKey": null
@@ -198,20 +198,20 @@ return {
       (v1/*: any*/)
     ],
     "kind": "Operation",
-    "name": "mutationAddCommentMutation",
+    "name": "CommentThreadAddCommentMutation",
     "selections": (v5/*: any*/)
   },
   "params": {
-    "cacheID": "a87fe103533e777da0db2f7a40f9bd0c",
+    "cacheID": "9f86962650b0d1575d3c0a0381cb4e60",
     "id": null,
     "metadata": {},
-    "name": "mutationAddCommentMutation",
+    "name": "CommentThreadAddCommentMutation",
     "operationKind": "mutation",
-    "text": "mutation mutationAddCommentMutation(\n  $issue_id: UUID!\n  $author_id: UUID!\n  $body: String!\n) {\n  insertIntocommentsCollection(objects: [{issue_id: $issue_id, author_id: $author_id, body: $body}]) {\n    records {\n      nodeId\n      id\n      issue_id\n      body\n      author_id\n      created_at\n      users {\n        nodeId\n        id\n        name\n        avatar_url\n      }\n    }\n  }\n}\n"
+    "text": "mutation CommentThreadAddCommentMutation(\n  $issue_id: UUID!\n  $author_id: UUID!\n  $body: String!\n) {\n  insertIntocommentsCollection(objects: [{issue_id: $issue_id, author_id: $author_id, body: $body}]) {\n    records {\n      nodeId\n      id\n      issue_id\n      body\n      author_id\n      created_at\n      users {\n        nodeId\n        id\n        name\n        avatar_url\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "49174e87c797c63ea0698f275124816e";
+(node as any).hash = "a0b42bbab3b4fb8528bff58164ef538e";
 
 export default node;

@@ -3,19 +3,19 @@ import { IssuePriority, IssueStatus } from '../types';
 export const STATUS_CONFIG: Record<IssueStatus, { label: string; className: string }> = {
   open: {
     label: 'Open',
-    className: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
+    className: 'ring-1 ring-inset ring-sky-400/30 bg-sky-500/10 text-sky-300',
   },
   in_progress: {
     label: 'In Progress',
-    className: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
+    className: 'ring-1 ring-inset ring-amber-400/30 bg-amber-500/10 text-amber-300',
   },
   done: {
     label: 'Done',
-    className: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300',
+    className: 'ring-1 ring-inset ring-emerald-400/30 bg-emerald-500/10 text-emerald-300',
   },
   cancelled: {
     label: 'Cancelled',
-    className: 'bg-zinc-100 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400',
+    className: 'ring-1 ring-inset ring-zinc-600/30 bg-zinc-500/10 text-zinc-500',
   },
 };
 
@@ -25,23 +25,23 @@ export const PRIORITY_CONFIG: Record<
 > = {
   urgent: {
     label: 'Urgent',
-    className: 'bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300',
-    dot: 'bg-red-500',
+    className: 'ring-1 ring-inset ring-red-400/30 bg-red-500/10 text-red-400',
+    dot: 'bg-red-400',
   },
   high: {
     label: 'High',
-    className: 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300',
-    dot: 'bg-orange-500',
+    className: 'ring-1 ring-inset ring-orange-400/30 bg-orange-500/10 text-orange-400',
+    dot: 'bg-orange-400',
   },
   medium: {
     label: 'Medium',
-    className: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300',
-    dot: 'bg-yellow-500',
+    className: 'ring-1 ring-inset ring-yellow-400/30 bg-yellow-500/10 text-yellow-400',
+    dot: 'bg-yellow-400',
   },
   low: {
     label: 'Low',
-    className: 'bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400',
-    dot: 'bg-zinc-400',
+    className: 'ring-1 ring-inset ring-zinc-600/30 bg-zinc-500/10 text-zinc-500',
+    dot: 'bg-zinc-500',
   },
 };
 

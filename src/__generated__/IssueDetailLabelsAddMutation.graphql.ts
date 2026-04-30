@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1ecc2ac4815600993cc0a694ad78525d>>
+ * @generated SignedSource<<df915c1ee82cde0426f0e5ba414d8e78>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,22 +9,22 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from 'relay-runtime';
-export type mutationIssueDetailHeaderTitleMutation$variables = {
-  id: any;
-  title: string;
+export type IssueDetailLabelsAddMutation$variables = {
+  issue_id: any;
+  label_id: any;
 };
-export type mutationIssueDetailHeaderTitleMutation$data = {
-  readonly updateissuesCollection: {
+export type IssueDetailLabelsAddMutation$data = {
+  readonly insertIntoissue_labelsCollection: {
     readonly records: ReadonlyArray<{
-      readonly id: any;
+      readonly issue_id: any;
+      readonly label_id: any;
       readonly nodeId: string;
-      readonly title: string;
     }>;
-  };
+  } | null | undefined;
 };
-export type mutationIssueDetailHeaderTitleMutation = {
-  response: mutationIssueDetailHeaderTitleMutation$data;
-  variables: mutationIssueDetailHeaderTitleMutation$variables;
+export type IssueDetailLabelsAddMutation = {
+  response: IssueDetailLabelsAddMutation$data;
+  variables: IssueDetailLabelsAddMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -32,12 +32,12 @@ var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "id"
+    "name": "issue_id"
   },
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "title"
+    "name": "label_id"
   }
 ],
 v1 = [
@@ -45,43 +45,37 @@ v1 = [
     "alias": null,
     "args": [
       {
-        "fields": [
+        "items": [
           {
             "fields": [
               {
                 "kind": "Variable",
-                "name": "eq",
-                "variableName": "id"
+                "name": "issue_id",
+                "variableName": "issue_id"
+              },
+              {
+                "kind": "Variable",
+                "name": "label_id",
+                "variableName": "label_id"
               }
             ],
             "kind": "ObjectValue",
-            "name": "id"
+            "name": "objects.0"
           }
         ],
-        "kind": "ObjectValue",
-        "name": "filter"
-      },
-      {
-        "fields": [
-          {
-            "kind": "Variable",
-            "name": "title",
-            "variableName": "title"
-          }
-        ],
-        "kind": "ObjectValue",
-        "name": "set"
+        "kind": "ListValue",
+        "name": "objects"
       }
     ],
-    "concreteType": "issuesUpdateResponse",
+    "concreteType": "issue_labelsInsertResponse",
     "kind": "LinkedField",
-    "name": "updateissuesCollection",
+    "name": "insertIntoissue_labelsCollection",
     "plural": false,
     "selections": [
       {
         "alias": null,
         "args": null,
-        "concreteType": "issues",
+        "concreteType": "issue_labels",
         "kind": "LinkedField",
         "name": "records",
         "plural": true,
@@ -97,14 +91,14 @@ v1 = [
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "id",
+            "name": "issue_id",
             "storageKey": null
           },
           {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "title",
+            "name": "label_id",
             "storageKey": null
           }
         ],
@@ -119,7 +113,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "mutationIssueDetailHeaderTitleMutation",
+    "name": "IssueDetailLabelsAddMutation",
     "selections": (v1/*: any*/),
     "type": "Mutation",
     "abstractKey": null
@@ -128,20 +122,20 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "mutationIssueDetailHeaderTitleMutation",
+    "name": "IssueDetailLabelsAddMutation",
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "ca349618dbc737a1025ec4f5a28e8f66",
+    "cacheID": "b246fe47e887f1ab9e4173be1d31559f",
     "id": null,
     "metadata": {},
-    "name": "mutationIssueDetailHeaderTitleMutation",
+    "name": "IssueDetailLabelsAddMutation",
     "operationKind": "mutation",
-    "text": "mutation mutationIssueDetailHeaderTitleMutation(\n  $id: UUID!\n  $title: String!\n) {\n  updateissuesCollection(filter: {id: {eq: $id}}, set: {title: $title}) {\n    records {\n      nodeId\n      id\n      title\n    }\n  }\n}\n"
+    "text": "mutation IssueDetailLabelsAddMutation(\n  $issue_id: UUID!\n  $label_id: UUID!\n) {\n  insertIntoissue_labelsCollection(objects: [{issue_id: $issue_id, label_id: $label_id}]) {\n    records {\n      nodeId\n      issue_id\n      label_id\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "fc51d0980e89df09351f665be689fc13";
+(node as any).hash = "d0f1da1732677da1161f64b9c78bdccc";
 
 export default node;

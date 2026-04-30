@@ -3,17 +3,17 @@
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import { useFragment, useMutation } from 'react-relay';
-import type { fragmentIssueListItem_IssueFragment$key } from '@/__generated__/fragmentIssueListItem_IssueFragment.graphql';
-import type { mutationIssueListItemUpdateStatusMutation } from '@/__generated__/mutationIssueListItemUpdateStatusMutation.graphql';
+import type { IssueListItem_issue$key } from '@/__generated__/IssueListItem_issue.graphql';
+import type { IssueListItemUpdateStatusMutation as IssueListItemUpdateStatusMutationType } from '@/__generated__/IssueListItemUpdateStatusMutation.graphql';
 import { LabelBadge, PriorityBadge, StatusBadge } from '@/components/ui/Badges';
 import { routes } from '@/lib/routes';
 import { useToast } from '@hooks/useToasts';
 import type { IssueStatus } from '../ui/types';
 import { STATUSES } from '../ui/Badges/constants';
-import { UpdateStatusMutation, IssueListItemFragment } from './api';
+import { IssueListItemFragment, IssueListItemUpdateStatusMutation } from './api';
 
 interface IssueListItemProps {
-  issue: fragmentIssueListItem_IssueFragment$key;
+  issue: IssueListItem_issue$key;
 }
 
 const STATUS_CYCLE: IssueStatus[] = STATUSES;
@@ -24,7 +24,7 @@ export function IssueListItem({ issue: issueRef }: IssueListItemProps) {
   const router = useRouter();
 
   const [commitUpdateStatus, isUpdating] =
-    useMutation<mutationIssueListItemUpdateStatusMutation>(UpdateStatusMutation);
+    useMutation<IssueListItemUpdateStatusMutationType>(IssueListItemUpdateStatusMutation);
 
   const handleStatusClick = useCallback(
     (e: React.MouseEvent) => {
@@ -66,12 +66,12 @@ export function IssueListItem({ issue: issueRef }: IssueListItemProps) {
   return (
     <div
       onClick={handleClick}
-      className="flex cursor-pointer items-start gap-3 px-4 py-3 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-900"
+      className="group flex cursor-pointer items-start gap-3 px-4 py-3.5 transition-colors duration-150 hover:bg-[#131320]"
     >
       <button
         onClick={handleStatusClick}
         disabled={isUpdating}
-        className="mt-0.5 shrink-0 disabled:opacity-50"
+        className="mt-0.5 shrink-0 disabled:opacity-40 transition-opacity"
         title="Click to advance status"
       >
         <StatusBadge status={issue.status} />
@@ -79,7 +79,7 @@ export function IssueListItem({ issue: issueRef }: IssueListItemProps) {
 
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2">
-          <span className="truncate font-medium text-zinc-900 dark:text-zinc-100">
+          <span className="truncate text-sm text-[#e4e4f4] group-hover:text-white transition-colors">
             {issue.title}
           </span>
           {issueLabels.length > 0 && (
@@ -90,7 +90,7 @@ export function IssueListItem({ issue: issueRef }: IssueListItemProps) {
             </span>
           )}
         </div>
-        <div className="mt-1 flex items-center gap-2 text-xs text-zinc-500">
+        <div className="mt-1 flex items-center gap-2 font-[family-name:var(--font-dm-mono)] text-xs text-[#7070a0]">
           <span>{createdAt}</span>
           {issue.users && <span>· {issue.users.name}</span>}
         </div>

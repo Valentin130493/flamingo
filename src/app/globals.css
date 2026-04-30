@@ -1,2 +1,37 @@
 @import "tailwindcss";
 
+@theme {
+  --font-display: var(--font-syne);
+  --font-body: var(--font-dm-sans);
+  --font-mono: var(--font-dm-mono);
+
+  --color-bg: #0c0c12;
+  --color-surface: #131320;
+  --color-surface-raised: #1c1c2e;
+  --color-rim: #26263a;
+  --color-rim-faint: #1e1e2c;
+  --color-ink: #e4e4f4;
+  --color-ink-muted: #7070a0;
+  --color-ink-faint: #3c3c58;
+  --color-flamingo: #f06292;
+}
+
+@layer base {
+  html {
+    background-color: #0c0c12;
+    color: #e4e4f4;
+  }
+
+  body {
+    background:
+      radial-gradient(ellipse 100% 40% at 50% -5%, rgba(240, 98, 146, 0.07), transparent),
+      #0c0c12;
+    font-family: var(--font-dm-sans), sans-serif;
+  }
+
+  ::selection {
+    background-color: rgba(240, 98, 146, 0.22);
+    color: #e4e4f4;
+  }
+}
+

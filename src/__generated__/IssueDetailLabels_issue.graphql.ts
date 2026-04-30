@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f309851ea0efaa45b0246d43fc8ff61d>>
+ * @generated SignedSource<<7c37548fbd4ac4e43b0a54c3c81dbd36>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,7 +10,7 @@
 
 import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type fragmentIssueLabels_IssueFragment$data = {
+export type IssueDetailLabels_issue$data = {
   readonly id: any;
   readonly issue_labelsCollection: {
     readonly edges: ReadonlyArray<{
@@ -27,11 +27,11 @@ export type fragmentIssueLabels_IssueFragment$data = {
     }>;
   } | null | undefined;
   readonly nodeId: string;
-  readonly " $fragmentType": "fragmentIssueLabels_IssueFragment";
+  readonly " $fragmentType": "IssueDetailLabels_issue";
 };
-export type fragmentIssueLabels_IssueFragment$key = {
-  readonly " $data"?: fragmentIssueLabels_IssueFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"fragmentIssueLabels_IssueFragment">;
+export type IssueDetailLabels_issue$key = {
+  readonly " $data"?: IssueDetailLabels_issue$data;
+  readonly " $fragmentSpreads": FragmentRefs<"IssueDetailLabels_issue">;
 };
 
 const node: ReaderFragment = (function(){
@@ -53,7 +53,7 @@ return {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "fragmentIssueLabels_IssueFragment",
+  "name": "IssueDetailLabels_issue",
   "selections": [
     (v0/*: any*/),
     (v1/*: any*/),
@@ -137,6 +137,6 @@ return {
 };
 })();
 
-(node as any).hash = "dfa41cbb0358a9db16727ba1393ba92b";
+(node as any).hash = "372cd73a19a20c3e4f57000b739774e2";
 
 export default node;

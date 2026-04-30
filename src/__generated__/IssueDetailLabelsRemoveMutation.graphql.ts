@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<774662569925f6617728c64700388754>>
+ * @generated SignedSource<<811f0adcf54656097805f5bac59d9311>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,22 +9,22 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from 'relay-runtime';
-export type mutationIssueLabelsAddMutation$variables = {
+export type IssueDetailLabelsRemoveMutation$variables = {
   issue_id: any;
   label_id: any;
 };
-export type mutationIssueLabelsAddMutation$data = {
-  readonly insertIntoissue_labelsCollection: {
+export type IssueDetailLabelsRemoveMutation$data = {
+  readonly deleteFromissue_labelsCollection: {
     readonly records: ReadonlyArray<{
       readonly issue_id: any;
       readonly label_id: any;
       readonly nodeId: string;
     }>;
-  } | null | undefined;
+  };
 };
-export type mutationIssueLabelsAddMutation = {
-  response: mutationIssueLabelsAddMutation$data;
-  variables: mutationIssueLabelsAddMutation$variables;
+export type IssueDetailLabelsRemoveMutation = {
+  response: IssueDetailLabelsRemoveMutation$data;
+  variables: IssueDetailLabelsRemoveMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -45,31 +45,37 @@ v1 = [
     "alias": null,
     "args": [
       {
-        "items": [
+        "fields": [
           {
             "fields": [
               {
                 "kind": "Variable",
-                "name": "issue_id",
+                "name": "eq",
                 "variableName": "issue_id"
-              },
+              }
+            ],
+            "kind": "ObjectValue",
+            "name": "issue_id"
+          },
+          {
+            "fields": [
               {
                 "kind": "Variable",
-                "name": "label_id",
+                "name": "eq",
                 "variableName": "label_id"
               }
             ],
             "kind": "ObjectValue",
-            "name": "objects.0"
+            "name": "label_id"
           }
         ],
-        "kind": "ListValue",
-        "name": "objects"
+        "kind": "ObjectValue",
+        "name": "filter"
       }
     ],
-    "concreteType": "issue_labelsInsertResponse",
+    "concreteType": "issue_labelsDeleteResponse",
     "kind": "LinkedField",
-    "name": "insertIntoissue_labelsCollection",
+    "name": "deleteFromissue_labelsCollection",
     "plural": false,
     "selections": [
       {
@@ -113,7 +119,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "mutationIssueLabelsAddMutation",
+    "name": "IssueDetailLabelsRemoveMutation",
     "selections": (v1/*: any*/),
     "type": "Mutation",
     "abstractKey": null
@@ -122,20 +128,20 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "mutationIssueLabelsAddMutation",
+    "name": "IssueDetailLabelsRemoveMutation",
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "36e39427b48f5ee203f674cb995ffd0a",
+    "cacheID": "9eb501bd5b1cdbef1a2685a91b7efd7e",
     "id": null,
     "metadata": {},
-    "name": "mutationIssueLabelsAddMutation",
+    "name": "IssueDetailLabelsRemoveMutation",
     "operationKind": "mutation",
-    "text": "mutation mutationIssueLabelsAddMutation(\n  $issue_id: UUID!\n  $label_id: UUID!\n) {\n  insertIntoissue_labelsCollection(objects: [{issue_id: $issue_id, label_id: $label_id}]) {\n    records {\n      nodeId\n      issue_id\n      label_id\n    }\n  }\n}\n"
+    "text": "mutation IssueDetailLabelsRemoveMutation(\n  $issue_id: UUID!\n  $label_id: UUID!\n) {\n  deleteFromissue_labelsCollection(filter: {issue_id: {eq: $issue_id}, label_id: {eq: $label_id}}) {\n    records {\n      nodeId\n      issue_id\n      label_id\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "c8d4b0bd6c077ae3ea408e2e411ecf81";
+(node as any).hash = "8e96c155a217cfb341ffec62f08b4160";
 
 export default node;

@@ -2,9 +2,9 @@
 
 import { useCallback, useState } from 'react';
 import { useMutation } from 'react-relay';
-import type { mutationAddCommentMutation } from '@/__generated__/mutationAddCommentMutation.graphql';
+import type { CommentThreadAddCommentMutation as CommentThreadAddCommentMutationType } from '@/__generated__/CommentThreadAddCommentMutation.graphql';
 import { useToast } from '@hooks/useToasts';
-import { AddCommentMutationDoc } from './api';
+import { CommentThreadAddCommentMutation } from './api';
 
 type AddCommentProps = {
   issueId: string;
@@ -15,7 +15,8 @@ type AddCommentProps = {
 export function AddComment({ issueId, currentUserId, onAdded }: AddCommentProps) {
   const [body, setBody] = useState('');
   const { showToast } = useToast();
-  const [commitAdd, isInFlight] = useMutation<mutationAddCommentMutation>(AddCommentMutationDoc);
+  const [commitAdd, isInFlight] =
+    useMutation<CommentThreadAddCommentMutationType>(CommentThreadAddCommentMutation);
 
   const handleSubmit = useCallback(
     (e: React.SyntheticEvent<HTMLFormElement>) => {
@@ -42,12 +43,12 @@ export function AddComment({ issueId, currentUserId, onAdded }: AddCommentProps)
         onChange={(e) => setBody(e.target.value)}
         placeholder="Add a comment…"
         rows={3}
-        className="w-full rounded-lg border border-zinc-200 p-3 text-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"
+        className="w-full rounded-lg border border-[#26263a] bg-[#131320] p-3 text-sm text-[#e4e4f4] outline-none transition-colors focus:border-[#f06292]/50 focus:ring-1 focus:ring-[#f06292]/20 placeholder:text-[#3c3c58]"
       />
       <button
         type="submit"
         disabled={isInFlight || !body.trim()}
-        className="rounded-md bg-blue-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+        className="cursor-pointer rounded-md bg-[#f06292] px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-[#e91e73] disabled:cursor-not-allowed disabled:opacity-40"
       >
         {isInFlight ? 'Posting…' : 'Comment'}
       </button>

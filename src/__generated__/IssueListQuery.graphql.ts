@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<48e1ae8198124ac6ab627ee9a83f2db8>>
+ * @generated SignedSource<<ad09aa03e7da92e35ddc9a7b239ab777>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -58,11 +58,11 @@ export type DatetimeFilter = {
 export type IDFilter = {
   eq?: string | null | undefined;
 };
-export type queryIssueListQuery$variables = {
+export type IssueListQuery$variables = {
   filter?: issuesFilter | null | undefined;
   first?: number | null | undefined;
 };
-export type queryIssueListQuery$data = {
+export type IssueListQuery$data = {
   readonly labelsCollection: {
     readonly edges: ReadonlyArray<{
       readonly node: {
@@ -73,11 +73,11 @@ export type queryIssueListQuery$data = {
       };
     }>;
   } | null | undefined;
-  readonly " $fragmentSpreads": FragmentRefs<"fragmentIssueList_IssueListFragment">;
+  readonly " $fragmentSpreads": FragmentRefs<"IssueList_query">;
 };
-export type queryIssueListQuery = {
-  response: queryIssueListQuery$data;
-  variables: queryIssueListQuery$variables;
+export type IssueListQuery = {
+  response: IssueListQuery$data;
+  variables: IssueListQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -196,7 +196,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "queryIssueListQuery",
+    "name": "IssueListQuery",
     "selections": [
       {
         "args": [
@@ -204,7 +204,7 @@ return {
           (v2/*: any*/)
         ],
         "kind": "FragmentSpread",
-        "name": "fragmentIssueList_IssueListFragment"
+        "name": "IssueList_query"
       },
       (v7/*: any*/)
     ],
@@ -215,7 +215,7 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "queryIssueListQuery",
+    "name": "IssueListQuery",
     "selections": [
       {
         "alias": null,
@@ -406,16 +406,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "e1dcadf623b1c118e4e79cf676681505",
+    "cacheID": "fc52abb825f65c0f6c46cb142bdc4d0a",
     "id": null,
     "metadata": {},
-    "name": "queryIssueListQuery",
+    "name": "IssueListQuery",
     "operationKind": "query",
-    "text": "query queryIssueListQuery(\n  $filter: issuesFilter\n  $first: Int\n) {\n  ...fragmentIssueList_IssueListFragment_1qzYLD\n  labelsCollection(orderBy: [{name: AscNullsLast}]) {\n    edges {\n      node {\n        nodeId\n        id\n        name\n        color\n      }\n    }\n  }\n}\n\nfragment fragmentIssueListItem_IssueFragment on issues {\n  nodeId\n  id\n  title\n  status\n  priority\n  created_at\n  users {\n    nodeId\n    id\n    name\n    avatar_url\n  }\n  issue_labelsCollection(first: 5) {\n    edges {\n      node {\n        nodeId\n        labels {\n          nodeId\n          id\n          name\n          color\n        }\n      }\n    }\n  }\n}\n\nfragment fragmentIssueList_IssueListFragment_1qzYLD on Query {\n  issuesCollection(filter: $filter, first: $first, orderBy: [{created_at: DescNullsLast}]) {\n    edges {\n      node {\n        nodeId\n        ...fragmentIssueListItem_IssueFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n}\n"
+    "text": "query IssueListQuery(\n  $filter: issuesFilter\n  $first: Int\n) {\n  ...IssueList_query_1qzYLD\n  labelsCollection(orderBy: [{name: AscNullsLast}]) {\n    edges {\n      node {\n        nodeId\n        id\n        name\n        color\n      }\n    }\n  }\n}\n\nfragment IssueListItem_issue on issues {\n  nodeId\n  id\n  title\n  status\n  priority\n  created_at\n  users {\n    nodeId\n    id\n    name\n    avatar_url\n  }\n  issue_labelsCollection(first: 5) {\n    edges {\n      node {\n        nodeId\n        labels {\n          nodeId\n          id\n          name\n          color\n        }\n      }\n    }\n  }\n}\n\nfragment IssueList_query_1qzYLD on Query {\n  issuesCollection(filter: $filter, first: $first, orderBy: [{created_at: DescNullsLast}]) {\n    edges {\n      node {\n        nodeId\n        ...IssueListItem_issue\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "398e94a043d314303ed095ea07df5c09";
+(node as any).hash = "0d4fd1bc6ed221ee98a1dfd8ac85cabf";
 
 export default node;

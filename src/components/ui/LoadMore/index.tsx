@@ -10,7 +10,7 @@ export function LoadMore({ onLoadMore, isLoading, hasMore }: LoadMoreProps) {
       <button
         onClick={onLoadMore}
         disabled={isLoading}
-        className="rounded-lg border border-zinc-200 px-4 py-2 text-sm text-zinc-600 transition-colors hover:bg-zinc-50 disabled:opacity-50 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800"
+        className="cursor-pointer rounded-md border border-[#26263a] px-4 py-2 font-[family-name:var(--font-dm-mono)] text-xs text-[#7070a0] transition-colors hover:border-[#f06292]/40 hover:text-[#f06292] disabled:cursor-not-allowed disabled:opacity-40"
       >
         {isLoading ? 'Loading…' : 'Load more'}
       </button>

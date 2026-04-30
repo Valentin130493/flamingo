@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e67fd4bd34ac040d4594cdcbb237b857>>
+ * @generated SignedSource<<7e5871bcf17fcfdba6a57d9eae5765ae>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -64,7 +64,7 @@ export type IssueListRefetchQuery$variables = {
   first?: number | null | undefined;
 };
 export type IssueListRefetchQuery$data = {
-  readonly " $fragmentSpreads": FragmentRefs<"fragmentIssueList_IssueListFragment">;
+  readonly " $fragmentSpreads": FragmentRefs<"IssueList_query">;
 };
 export type IssueListRefetchQuery = {
   response: IssueListRefetchQuery$data;
@@ -153,7 +153,7 @@ return {
           (v3/*: any*/)
         ],
         "kind": "FragmentSpread",
-        "name": "fragmentIssueList_IssueListFragment"
+        "name": "IssueList_query"
       }
     ],
     "type": "Query",
@@ -364,16 +364,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "44a1955e5da863d4add1529aeeb11652",
+    "cacheID": "a499ca77367ce1f083c0b0e08ee2656a",
     "id": null,
     "metadata": {},
     "name": "IssueListRefetchQuery",
     "operationKind": "query",
-    "text": "query IssueListRefetchQuery(\n  $after: Cursor\n  $filter: issuesFilter\n  $first: Int = 20\n) {\n  ...fragmentIssueList_IssueListFragment_G9cLv\n}\n\nfragment fragmentIssueListItem_IssueFragment on issues {\n  nodeId\n  id\n  title\n  status\n  priority\n  created_at\n  users {\n    nodeId\n    id\n    name\n    avatar_url\n  }\n  issue_labelsCollection(first: 5) {\n    edges {\n      node {\n        nodeId\n        labels {\n          nodeId\n          id\n          name\n          color\n        }\n      }\n    }\n  }\n}\n\nfragment fragmentIssueList_IssueListFragment_G9cLv on Query {\n  issuesCollection(filter: $filter, first: $first, after: $after, orderBy: [{created_at: DescNullsLast}]) {\n    edges {\n      node {\n        nodeId\n        ...fragmentIssueListItem_IssueFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n}\n"
+    "text": "query IssueListRefetchQuery(\n  $after: Cursor\n  $filter: issuesFilter\n  $first: Int = 20\n) {\n  ...IssueList_query_G9cLv\n}\n\nfragment IssueListItem_issue on issues {\n  nodeId\n  id\n  title\n  status\n  priority\n  created_at\n  users {\n    nodeId\n    id\n    name\n    avatar_url\n  }\n  issue_labelsCollection(first: 5) {\n    edges {\n      node {\n        nodeId\n        labels {\n          nodeId\n          id\n          name\n          color\n        }\n      }\n    }\n  }\n}\n\nfragment IssueList_query_G9cLv on Query {\n  issuesCollection(filter: $filter, first: $first, after: $after, orderBy: [{created_at: DescNullsLast}]) {\n    edges {\n      node {\n        nodeId\n        ...IssueListItem_issue\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "7826088cd15aca076eeb962b55b93678";
+(node as any).hash = "7734b58ab3140f183c5cc912a7799491";
 
 export default node;

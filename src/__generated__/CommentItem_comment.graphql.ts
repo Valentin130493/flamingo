@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8af8df9e779c5faecd07102f7b65743b>>
+ * @generated SignedSource<<b180820f89548acb3dd3af39bafefed0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,7 +10,7 @@
 
 import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type fragmentCommentItem_CommentFragment$data = {
+export type CommentItem_comment$data = {
   readonly body: string;
   readonly created_at: any;
   readonly id: any;
@@ -21,11 +21,11 @@ export type fragmentCommentItem_CommentFragment$data = {
     readonly name: string;
     readonly nodeId: string;
   } | null | undefined;
-  readonly " $fragmentType": "fragmentCommentItem_CommentFragment";
+  readonly " $fragmentType": "CommentItem_comment";
 };
-export type fragmentCommentItem_CommentFragment$key = {
-  readonly " $data"?: fragmentCommentItem_CommentFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"fragmentCommentItem_CommentFragment">;
+export type CommentItem_comment$key = {
+  readonly " $data"?: CommentItem_comment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"CommentItem_comment">;
 };
 
 const node: ReaderFragment = (function(){
@@ -47,7 +47,7 @@ return {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "fragmentCommentItem_CommentFragment",
+  "name": "CommentItem_comment",
   "selections": [
     (v0/*: any*/),
     (v1/*: any*/),
@@ -98,6 +98,6 @@ return {
 };
 })();
 
-(node as any).hash = "0d337a443d43f7f281efc145720a34a6";
+(node as any).hash = "a1d65bc0e374fd2f0176d6ecded3318f";
 
 export default node;

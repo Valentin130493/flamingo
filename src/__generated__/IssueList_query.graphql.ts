@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<353986a6d4a6549b48ceeb0961ca5e01>>
+ * @generated SignedSource<<975278af95a9a62ff50d7fe586d7fdc2>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,12 +10,12 @@
 
 import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type fragmentIssueList_IssueListFragment$data = {
+export type IssueList_query$data = {
   readonly issuesCollection: {
     readonly edges: ReadonlyArray<{
       readonly node: {
         readonly nodeId: string;
-        readonly " $fragmentSpreads": FragmentRefs<"fragmentIssueListItem_IssueFragment">;
+        readonly " $fragmentSpreads": FragmentRefs<"IssueListItem_issue">;
       };
     }>;
     readonly pageInfo: {
@@ -23,11 +23,11 @@ export type fragmentIssueList_IssueListFragment$data = {
       readonly hasNextPage: boolean;
     };
   } | null | undefined;
-  readonly " $fragmentType": "fragmentIssueList_IssueListFragment";
+  readonly " $fragmentType": "IssueList_query";
 };
-export type fragmentIssueList_IssueListFragment$key = {
-  readonly " $data"?: fragmentIssueList_IssueListFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"fragmentIssueList_IssueListFragment">;
+export type IssueList_query$key = {
+  readonly " $data"?: IssueList_query$data;
+  readonly " $fragmentSpreads": FragmentRefs<"IssueList_query">;
 };
 
 import IssueListRefetchQuery_graphql from './IssueListRefetchQuery.graphql';
@@ -77,7 +77,7 @@ return {
       "operation": IssueListRefetchQuery_graphql
     }
   },
-  "name": "fragmentIssueList_IssueListFragment",
+  "name": "IssueList_query",
   "selections": [
     {
       "alias": "issuesCollection",
@@ -128,7 +128,7 @@ return {
                 {
                   "args": null,
                   "kind": "FragmentSpread",
-                  "name": "fragmentIssueListItem_IssueFragment"
+                  "name": "IssueListItem_issue"
                 },
                 {
                   "alias": null,
@@ -184,6 +184,6 @@ return {
 };
 })();
 
-(node as any).hash = "7826088cd15aca076eeb962b55b93678";
+(node as any).hash = "7734b58ab3140f183c5cc912a7799491";
 
 export default node;

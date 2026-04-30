@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3d6dc6f1e773228cfec7e13786c3151a>>
+ * @generated SignedSource<<d7ed770fa3fde71c6d90abc050909929>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,20 +10,20 @@
 
 import { ConcreteRequest } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type queryIssueDetailQuery$variables = {
+export type IssueDetailQuery$variables = {
   id: any;
   issueId: any;
 };
-export type queryIssueDetailQuery$data = {
+export type IssueDetailQuery$data = {
   readonly issuesCollection: {
     readonly edges: ReadonlyArray<{
       readonly node: {
         readonly id: any;
         readonly nodeId: string;
         readonly users: {
-          readonly " $fragmentSpreads": FragmentRefs<"fragmentIssueAssignee_AssigneeFragment">;
+          readonly " $fragmentSpreads": FragmentRefs<"IssueAssignee_user">;
         } | null | undefined;
-        readonly " $fragmentSpreads": FragmentRefs<"fragmentIssueDetailBody_IssueFragment" | "fragmentIssueDetailHeader_IssueFragment" | "fragmentIssueLabels_IssueFragment">;
+        readonly " $fragmentSpreads": FragmentRefs<"IssueDetailBody_issue" | "IssueDetailHeader_issue" | "IssueDetailLabels_issue">;
       };
     }>;
   } | null | undefined;
@@ -37,11 +37,11 @@ export type queryIssueDetailQuery$data = {
       };
     }>;
   } | null | undefined;
-  readonly " $fragmentSpreads": FragmentRefs<"fragmentCommentThreadFragment">;
+  readonly " $fragmentSpreads": FragmentRefs<"CommentThread_query">;
 };
-export type queryIssueDetailQuery = {
-  response: queryIssueDetailQuery$data;
-  variables: queryIssueDetailQuery$variables;
+export type IssueDetailQuery = {
+  response: IssueDetailQuery$data;
+  variables: IssueDetailQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -218,7 +218,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "queryIssueDetailQuery",
+    "name": "IssueDetailQuery",
     "selections": [
       {
         "alias": null,
@@ -249,17 +249,17 @@ return {
                   {
                     "args": null,
                     "kind": "FragmentSpread",
-                    "name": "fragmentIssueDetailHeader_IssueFragment"
+                    "name": "IssueDetailHeader_issue"
                   },
                   {
                     "args": null,
                     "kind": "FragmentSpread",
-                    "name": "fragmentIssueDetailBody_IssueFragment"
+                    "name": "IssueDetailBody_issue"
                   },
                   {
                     "args": null,
                     "kind": "FragmentSpread",
-                    "name": "fragmentIssueLabels_IssueFragment"
+                    "name": "IssueDetailLabels_issue"
                   },
                   {
                     "alias": null,
@@ -272,7 +272,7 @@ return {
                       {
                         "args": null,
                         "kind": "FragmentSpread",
-                        "name": "fragmentIssueAssignee_AssigneeFragment"
+                        "name": "IssueAssignee_user"
                       }
                     ],
                     "storageKey": null
@@ -295,7 +295,7 @@ return {
           }
         ],
         "kind": "FragmentSpread",
-        "name": "fragmentCommentThreadFragment"
+        "name": "CommentThread_query"
       },
       (v6/*: any*/)
     ],
@@ -306,7 +306,7 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "queryIssueDetailQuery",
+    "name": "IssueDetailQuery",
     "selections": [
       {
         "alias": null,
@@ -525,16 +525,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "4d4657dfbb5698053095afc3abc537a0",
+    "cacheID": "7bce63f942ee64965f623a6507e54c6a",
     "id": null,
     "metadata": {},
-    "name": "queryIssueDetailQuery",
+    "name": "IssueDetailQuery",
     "operationKind": "query",
-    "text": "query queryIssueDetailQuery(\n  $id: UUID!\n  $issueId: UUID!\n) {\n  issuesCollection(filter: {id: {eq: $id}}) {\n    edges {\n      node {\n        nodeId\n        id\n        ...fragmentIssueDetailHeader_IssueFragment\n        ...fragmentIssueDetailBody_IssueFragment\n        ...fragmentIssueLabels_IssueFragment\n        users {\n          ...fragmentIssueAssignee_AssigneeFragment\n        }\n      }\n    }\n  }\n  ...fragmentCommentThreadFragment_4n6v5i\n  labelsCollection(orderBy: [{name: AscNullsLast}]) {\n    edges {\n      node {\n        nodeId\n        id\n        name\n        color\n      }\n    }\n  }\n}\n\nfragment fragmentCommentItem_CommentFragment on comments {\n  nodeId\n  id\n  body\n  created_at\n  users {\n    nodeId\n    id\n    name\n    avatar_url\n  }\n}\n\nfragment fragmentCommentThreadFragment_4n6v5i on Query {\n  commentsCollection(filter: {issue_id: {eq: $issueId}}, first: 20, orderBy: [{created_at: AscNullsFirst}]) {\n    edges {\n      node {\n        nodeId\n        ...fragmentCommentItem_CommentFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n}\n\nfragment fragmentIssueAssignee_AssigneeFragment on users {\n  nodeId\n  id\n  name\n  avatar_url\n}\n\nfragment fragmentIssueDetailBody_IssueFragment on issues {\n  nodeId\n  id\n  description\n}\n\nfragment fragmentIssueDetailHeader_IssueFragment on issues {\n  nodeId\n  id\n  title\n  status\n  priority\n  created_at\n}\n\nfragment fragmentIssueLabels_IssueFragment on issues {\n  nodeId\n  id\n  issue_labelsCollection(first: 20) {\n    edges {\n      node {\n        nodeId\n        label_id\n        labels {\n          nodeId\n          id\n          name\n          color\n        }\n      }\n    }\n  }\n}\n"
+    "text": "query IssueDetailQuery(\n  $id: UUID!\n  $issueId: UUID!\n) {\n  issuesCollection(filter: {id: {eq: $id}}) {\n    edges {\n      node {\n        nodeId\n        id\n        ...IssueDetailHeader_issue\n        ...IssueDetailBody_issue\n        ...IssueDetailLabels_issue\n        users {\n          ...IssueAssignee_user\n        }\n      }\n    }\n  }\n  ...CommentThread_query_4n6v5i\n  labelsCollection(orderBy: [{name: AscNullsLast}]) {\n    edges {\n      node {\n        nodeId\n        id\n        name\n        color\n      }\n    }\n  }\n}\n\nfragment CommentItem_comment on comments {\n  nodeId\n  id\n  body\n  created_at\n  users {\n    nodeId\n    id\n    name\n    avatar_url\n  }\n}\n\nfragment CommentThread_query_4n6v5i on Query {\n  commentsCollection(filter: {issue_id: {eq: $issueId}}, first: 20, orderBy: [{created_at: AscNullsFirst}]) {\n    edges {\n      node {\n        nodeId\n        ...CommentItem_comment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n}\n\nfragment IssueAssignee_user on users {\n  nodeId\n  id\n  name\n  avatar_url\n}\n\nfragment IssueDetailBody_issue on issues {\n  nodeId\n  id\n  description\n}\n\nfragment IssueDetailHeader_issue on issues {\n  nodeId\n  id\n  title\n  status\n  priority\n  created_at\n}\n\nfragment IssueDetailLabels_issue on issues {\n  nodeId\n  id\n  issue_labelsCollection(first: 20) {\n    edges {\n      node {\n        nodeId\n        label_id\n        labels {\n          nodeId\n          id\n          name\n          color\n        }\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "82b984119129405f9e90d156eac8d0d2";
+(node as any).hash = "cdf659594473d9696dcdb5df6f0dbaa7";
 
 export default node;

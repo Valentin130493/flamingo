@@ -2,14 +2,14 @@
 
 import { Suspense } from 'react';
 import { useLazyLoadQuery } from 'react-relay';
-import type { queryIssueDetailQuery } from '@/__generated__/queryIssueDetailQuery.graphql';
+import type { IssueDetailQuery as IssueDetailQueryType } from '@/__generated__/IssueDetailQuery.graphql';
 import { IssueDetailSkeleton } from '@/components/ui/Skeleton';
 import { IssueAssignee } from './IssueAssignee';
 import { IssueDetailBody } from './IssueDetailBody';
 import { IssueDetailHeader } from './IssueDetailHeader';
 import { IssueLabels } from './IssueLabels';
 import { CommentThread } from './CommentThread';
-import { IssueDetailQueryDoc } from './api';
+import { IssueDetailQuery as IssueDetailQueryDoc } from './api';
 
 const DEMO_USER_ID = process.env.NEXT_PUBLIC_DEMO_USER_ID ?? '';
 
@@ -18,7 +18,7 @@ interface IssueDetailQueryProps {
 }
 
 function IssueDetailInner({ issueId }: IssueDetailQueryProps) {
-  const data = useLazyLoadQuery<queryIssueDetailQuery>(
+  const data = useLazyLoadQuery<IssueDetailQueryType>(
     IssueDetailQueryDoc,
     { id: issueId, issueId },
     { fetchPolicy: 'store-and-network' },
